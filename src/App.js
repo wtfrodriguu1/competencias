@@ -1,24 +1,31 @@
-import logo from './logo.svg';
 import './App.css';
+import SkillList from './components/SkillList';
+import Input from './components/Input';
+
 
 function App() {
+
+  const competencias = [
+    {id: 1, name: "Lógica de programação"},
+    {id: 2, name: "Resolução de problemas"}
+  ];
+
+
+  function addSkill(skill) {    
+    let value = {id: competencias.length + 1, name: skill}
+    competencias.push(value)
+  }
+
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <Input addSkill={addSkill}/>
+        <SkillList values={competencias}/>
+        
       </header>
     </div>
+
   );
 }
 
